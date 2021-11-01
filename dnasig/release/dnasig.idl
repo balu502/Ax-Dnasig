@@ -1,0 +1,121 @@
+/****************************************************************************
+** Interface definition generated for ActiveQt project
+**
+**     'E:\agusev\gusev\Devel\dnasig\release\dnasig.exe'
+**
+** Created:  ѕн сен 27 11:35:20 2021
+**
+** WARNING! All changes made in this file will be lost!
+****************************************************************************/
+
+import "ocidl.idl";
+#include <olectl.h>
+
+[
+	uuid(2A593805-A956-4A3E-A593-CB81FEB5F16B),
+	version(1.0),
+	helpstring("dnasig 1.0 Type Library")
+]
+library dnasigLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	/************************************************************************
+	** If this causes a compile error in MIDL you need to upgrade the
+	** Platform SDK you are using. Download the SDK from msdn.microsoft.com
+	** and make sure that both the system and the Visual Studio environment
+	** use the correct files.
+	**
+	************************************************************************/
+
+	[uuid(34030F30-E359-4FE6-AB82-39766F5D91EE)]
+	struct QRect {
+		int left;
+		int top;
+		int right;
+		int bottom;
+	};
+
+	[uuid(CB5F84B3-29E5-491D-BA18-5472488EEFBA)]
+	struct QSize {
+		int width;
+		int height;
+	};
+
+	[uuid(3BE838A3-3FAC-BFC4-4C6C-37C44D030252)]
+	struct QPoint {
+		int x;
+		int y;
+	};
+
+	/* Forward declaration of classes that might be used as parameters */
+
+	coclass DnaSig;
+
+
+	enum MousePointer {
+		ArrowCursor             = 0,
+		UpArrowCursor           = 1,
+		CrossCursor             = 2,
+		WaitCursor              = 3,
+		IBeamCursor             = 4,
+		SizeVerCursor           = 5,
+		SizeHorCursor           = 6,
+		SizeBDiagCursor         = 7,
+		SizeFDiagCursor         = 8,
+		SizeAllCursor           = 9,
+		BlankCursor             = 10,
+		SplitVCursor            = 11,
+		SplitHCursor            = 12,
+		PointingHandCursor      = 13,
+		ForbiddenCursor         = 14,
+		WhatsThisCursor         = 15,
+		BusyCursor	= 16
+	};
+
+	enum FocusPolicy {
+		NoFocus             = 0,
+		TabFocus            = 1,
+		ClickFocus          = 2,
+		StrongFocus         = 11,
+		WheelFocus          = 15
+	};
+
+
+	[
+		uuid(5275EDF3-B653-4C85-BE19-3D90B157F0BD),
+		helpstring("DnaSig Interface")
+	]
+	dispinterface IDnaSig
+	{
+	properties:
+
+	methods:
+		[id(1)] void quit();
+		[id(2)] int execute([in,optional] VARIANT /*was: VARIANT_BOOL*/ p_isAx);
+		[id(3)] int setLocale([in] BSTR p0);
+		[id(4)] VARIANT_BOOL loadXmlTest([in] BSTR p_xmlTest);
+		[id(5)] BSTR signXmlTest([in] BSTR p_xmlTest);
+		[id(6)] VARIANT_BOOL appendFile([in] BSTR p_fileName, [in,optional,optional] VARIANT /*was: VARIANT*/ /*was: VARIANT_BOOL*/ p_applySign);
+	/****** Slot parameter uses unsupported datatype
+		[id(7)] VARIANT_BOOL appendStream([in] QTextStream p_textStrm, );
+	******/
+	/****** Slot parameter uses unsupported datatype
+		[id(8)] VARIANT_BOOL appendDomElement([in] QDomElement p_docElem, );
+	******/
+		[id(9)] BSTR privateKeys();
+		[id(10)] BSTR publicKeys();
+	};
+
+	[
+		aggregatable,
+		appobject,
+		helpstring("DnaSig Class"),
+		uuid(6DCA6D52-6D57-44AE-AFDC-2C4332680093)
+	]
+	coclass DnaSig
+	{
+		[default] dispinterface IDnaSig;
+	};
+};
